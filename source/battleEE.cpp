@@ -27,8 +27,8 @@ battleEE::~battleEE(void){}
 void battleEE::CalcStamina(Unit *A){
 	if ( A->wep.stance == 1 ) {
 		A->stamina += 0.1;
-		A->stamina -= ((double)abs(A->wep.old.x - A->wep.x))/20000.0;
-		A->stamina -= ((double)abs(A->wep.old.y - A->wep.y))/20000.0;
+		A->stamina -= ((double)fabs(A->wep.old.x - A->wep.x))/20000.0;
+		A->stamina -= ((double)fabs(A->wep.old.y - A->wep.y))/20000.0;
 	}
 	else if ( A->wep.stance == 2 ) {
 		A->stamina += 0.1;
@@ -173,9 +173,9 @@ void battleEE::CollisionDetection(Unit *u, Unit *ou, Arrow *arw){
 					&&
 					( !ou[j].wep.Wep_status == Wep_on_guard || u[i].wep.Wep_breaks_guard )
 					&&
-					( abs(u[i].x - ou[j].x) < u[i].wep.WD->length )
+					( fabs(u[i].x - ou[j].x) < u[i].wep.WD->length )
 					&&
-					( abs(u[i].y - ou[j].y) < u[i].wep.WD->length )
+					( fabs(u[i].y - ou[j].y) < u[i].wep.WD->length )
 				) {
 
 					for (int k = 0; k < dummy; k ++ ){				
@@ -905,7 +905,7 @@ void battleEE::Move_M(Unit *u){
 
 	//Now moves with circular speed limit 
 	dummy = sqrt( pow(u->difM.x, 2.0) + pow(u->difM.y, 2.0) ) ;
-	if ( abs(dummy) > 0.0001 ) {
+	if ( fabs(dummy) > 0.0001 ) {
 			if ( u->difM.x > 0 ) {				
 				u->x -= dummy > u->speed ? u->difM.x/dummy*u->speed : u->difM.x;
 				u->direction = 1;
@@ -917,12 +917,12 @@ void battleEE::Move_M(Unit *u){
 
 			if ( u->difM.y > 0 ){
 				u->y -= dummy > u->speed ? u->difM.y/dummy*u->speed : u->difM.y;
-				if ( abs(u->difM.x) < 2*abs(u->difM.y) )
+				if ( fabs(u->difM.x) < 2*fabs(u->difM.y) )
 					u->direction = 2;
 			}
 			else if ( u->difM.y < 0 ){
 				u->y -= dummy > u->speed ? u->difM.y/dummy*u->speed : u->difM.y;
-				if ( abs(u->difM.x) < 2*abs(u->difM.y) )
+				if ( fabs(u->difM.x) < 2*fabs(u->difM.y) )
 					u->direction = 0;
 			}
 	}
@@ -938,7 +938,7 @@ void battleEE::Move_M(Unit *u){
 	if ( u->ACT_type == ACT_fswing || (u->userunit && u->wep.Wep_status == Wep_on_swing)
 			
 		){
-		if ( abs( u->x - u->wep.x ) > abs( u->y - u->wep.y ) ) {
+		if ( fabs( u->x - u->wep.x ) > fabs( u->y - u->wep.y ) ) {
 			if ( u->x - u->wep.x  > 0 ) 
 				u->direction = 1;
 			else 
@@ -960,7 +960,7 @@ void battleEE::Move_M(Unit *u){
 			|| ( u->wep.weapon_type == 3 && u->ACT_type == ACT_bowaim )
 			|| (u->ACT_type == ACT_dashNslash && u->wep.stance == 1)) 
 		){
-		if ( abs( u->x - u->Target->x ) > abs( u->y - u->Target->y ) ) {
+		if ( fabs( u->x - u->Target->x ) > fabs( u->y - u->Target->y ) ) {
 			if ( u->x - u->Target->x  > 0 ) 
 				u->direction = 1;
 			else 

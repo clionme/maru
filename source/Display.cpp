@@ -24,47 +24,47 @@ Display::Display(HDC fore_dc, HINSTANCE hInst, double *zoom_in,
 	SelectObject(backS_dc, backS_bmp);
 /*
 	background_dc = CreateCompatibleDC(fore_dc);
-	background_bmp = (HBITMAP)LoadImage(hInst, L".\\bmp.\\bg_2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	background_bmp = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\bg_2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	SelectObject(background_dc, background_bmp);
 */
 	background_tile_dc[0] = CreateCompatibleDC(fore_dc);
-	background_tile_bmp[0] = (HBITMAP)LoadImage(hInst, L".\\bmp.\\bg_3.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	background_tile_bmp[0] = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\bg_3.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	SelectObject(background_tile_dc[0], background_tile_bmp[0]);
 
 	titlelogo_dc  = CreateCompatibleDC(fore_dc);
-	titlelogo_bmp = (HBITMAP)LoadImage(hInst, L".\\bmp.\\TitleS.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	titlelogo_bmp = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\TitleS.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	SelectObject(titlelogo_dc,titlelogo_bmp);
 
-	betty_bmp     = (HBITMAP)LoadImage(hInst, L".\\bmp.\\betty_1.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	betty_m_bmp   = (HBITMAP)LoadImage(hInst, L".\\bmp.\\betty_1m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	betty_bmp     = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\betty_1.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	betty_m_bmp   = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\betty_1m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	betty_dc = CreateCompatibleDC(fore_dc);
 	betty_m_dc = CreateCompatibleDC(fore_dc);
 	SelectObject(betty_dc,betty_bmp);
 	SelectObject(betty_m_dc,betty_m_bmp);
 
-	george_bmp    = (HBITMAP)LoadImage(hInst, L".\\bmp.\\george_0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	george_m_bmp  = (HBITMAP)LoadImage(hInst, L".\\bmp.\\george_0m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	george_bmp    = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\george_0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	george_m_bmp  = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\george_0m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	george_dc = CreateCompatibleDC(fore_dc);
 	george_m_dc = CreateCompatibleDC(fore_dc);
 	SelectObject(george_dc,george_bmp);
 	SelectObject(george_m_dc,george_m_bmp);
 
-	shield_bmp       = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_shield1.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	shield_mask_bmp  = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_shield1m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	shield_bmp       = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_shield1.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	shield_mask_bmp  = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_shield1m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	shield_dc = CreateCompatibleDC(fore_dc);
 	shield_m_dc = CreateCompatibleDC(fore_dc);
 	SelectObject(shield_dc,shield_bmp);
 	SelectObject(shield_m_dc,shield_mask_bmp);
 
-	status_bmp       = (HBITMAP)LoadImage(hInst, L".\\bmp.\\s_slow_small.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	status_mask_bmp  = (HBITMAP)LoadImage(hInst, L".\\bmp.\\s_slow_smallm.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	status_bmp       = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\s_slow_small.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	status_mask_bmp  = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\s_slow_smallm.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	status_dc = CreateCompatibleDC(fore_dc);
 	status_m_dc = CreateCompatibleDC(fore_dc);
 	SelectObject(status_dc,status_bmp);
 	SelectObject(status_m_dc,status_mask_bmp);
 
-	arrow_bmp       = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_arrow2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	arrow_mask_bmp  = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_arrow2m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	arrow_bmp       = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_arrow2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	arrow_mask_bmp  = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_arrow2m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	arrow_dc = CreateCompatibleDC(fore_dc);
 	SelectObject(arrow_dc,arrow_bmp);
 
@@ -75,29 +75,29 @@ Display::Display(HDC fore_dc, HINSTANCE hInst, double *zoom_in,
 		case 0: //there is always +1 to 'NUM_UNIT_TYPES'
 			break;
 		case 1:
-			wep_mini_bmp[i] = (HBITMAP)LoadImage(hInst, L".\\bmp.\\Mini_Sword0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-			wep_bmp[i]      = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_sword0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-			wepm_bmp[i]     = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_sword0m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wep_mini_bmp[i] = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\Mini_Sword0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wep_bmp[i]      = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_sword0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wepm_bmp[i]     = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_sword0m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 			break;
 		case 2:
-			wep_mini_bmp[i] = (HBITMAP)LoadImage(hInst, L".\\bmp.\\Mini_Spear0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-			wep_bmp[i]      = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_spear0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-			wepm_bmp[i]     = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_spear0m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wep_mini_bmp[i] = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\Mini_Spear0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wep_bmp[i]      = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_spear0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wepm_bmp[i]     = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_spear0m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 			break;
 		case 3:
-			wep_mini_bmp[i] = (HBITMAP)LoadImage(hInst, L".\\bmp.\\Mini_Bow0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-			wep_bmp[i]      = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_bow0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-			wepm_bmp[i]     = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_bow0m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wep_mini_bmp[i] = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\Mini_Bow0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wep_bmp[i]      = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_bow0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wepm_bmp[i]     = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_bow0m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 			break;
 		case 4:
-			wep_mini_bmp[i] = (HBITMAP)LoadImage(hInst, L".\\bmp.\\Mini_Dagger0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-			wep_bmp[i]      = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_dagger0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-			wepm_bmp[i]     = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_dagger0m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wep_mini_bmp[i] = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\Mini_Dagger0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wep_bmp[i]      = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_dagger0.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wepm_bmp[i]     = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_dagger0m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 			break;
 		case 5:
-			wep_mini_bmp[i] = (HBITMAP)LoadImage(hInst, L".\\bmp.\\Mini_Sword2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-			wep_bmp[i]      = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_sword2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-			wepm_bmp[i]     = (HBITMAP)LoadImage(hInst, L".\\bmp.\\w_sword2m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wep_mini_bmp[i] = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\Mini_Sword2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wep_bmp[i]      = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_sword2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+			wepm_bmp[i]     = (HBITMAP)LoadImage(hInst, (LPCSTR)".\\bmp.\\w_sword2m.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 			break;
 		}
 		SelectObject(wep_mini_dc[i],wep_mini_bmp[i]);
@@ -828,8 +828,8 @@ void Display::DrawUnitsToDraw(LGroup* L){
 		for (int i =0; i <= MAX_NUM_UNIT; i++ ) {
 			//if ( L[k].u[i].active && dist( (*disp_center), L[k].u[i] )*(*zoom)/100 < (WWAD*1.5) ) 
 			if ( L[k].u[i].active 
-				&& abs(disp_center->x - L[k].u[i].x)*(*zoom)/100 < (WWAD*1.3)
-				&& abs(disp_center->y - L[k].u[i].y)*(*zoom)/100 < (WHAD*1.3)) 
+				&& fabs(disp_center->x - L[k].u[i].x)*(*zoom)/100 < (WWAD*1.3)
+				&& fabs(disp_center->y - L[k].u[i].y)*(*zoom)/100 < (WHAD*1.3)) 
 				L[k].u[i].on_screen = true;
 			else 
 				L[k].u[i].on_screen = false;

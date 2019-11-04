@@ -147,7 +147,7 @@ double battleWeaponActionPreset::angle_between(double x1,double y1, double x2, d
 			= angle_between(u->x, u->y, 
 							u->Target->x, u->Target->y);
 
-		d = abs(u->wep.target_angle - u->wep.angle) ;
+		d = fabs(u->wep.target_angle - u->wep.angle) ;
 
 		if ( d > mPI ) 
 			d = 2.0*mPI - d;
@@ -201,14 +201,14 @@ double battleWeaponActionPreset::angle_between(double x1,double y1, double x2, d
 		d1 = u->wep.target_angle +mPI / 2.0;
 		if ( d1 > 2*mPI )
 			d1 -= 2*mPI;
-		d1 = abs(d1 - u->wep.angle );
+		d1 = fabs(d1 - u->wep.angle );
 		if ( d1 > mPI ) 
 			d1 = 2.0*mPI - d1;
 
 		d2 = u->wep.target_angle -mPI / 2.0;
 		if ( d2 < 0 ) 
 			d2 += 2*mPI;
-		d2 = abs(d2 - u->wep.angle );
+		d2 = fabs(d2 - u->wep.angle );
 		if ( d2 > mPI ) 
 			d2 = 2.0*mPI - d2;
 
@@ -346,7 +346,7 @@ double battleWeaponActionPreset::angle_between(double x1,double y1, double x2, d
 			= angle_between(u->x, u->y, 
 							u->Target->x, u->Target->y);
 
-		d = abs(u->wep.target_angle - u->wep.angle) ;
+		d = fabs(u->wep.target_angle - u->wep.angle) ;
 
 		if ( d > mPI ) 
 			d = 2.0*mPI - d;
@@ -400,14 +400,14 @@ double battleWeaponActionPreset::angle_between(double x1,double y1, double x2, d
 		d1 = u->wep.target_angle +mPI / 2.0;
 		if ( d1 > 2*mPI )
 			d1 -= 2*mPI;
-		d1 = abs(d1 - u->wep.angle );
+		d1 = fabs(d1 - u->wep.angle );
 		if ( d1 > mPI ) 
 			d1 = 2.0*mPI - d1;
 
 		d2 = u->wep.target_angle -mPI / 2.0;
 		if ( d2 < 0 ) 
 			d2 += 2*mPI;
-		d2 = abs(d2 - u->wep.angle );
+		d2 = fabs(d2 - u->wep.angle );
 		if ( d2 > mPI ) 
 			d2 = 2.0*mPI - d2;
 
@@ -762,7 +762,7 @@ void battleWeaponActionPreset::Atk_Poke(Unit * u){
 
 				else if ( (dist( (u->wep), (*u->Target)) < dist( (*u), (*u->Target) )) 
 					  && 
-					 (abs(dummy_a * u->wep.x + dummy_b * u->wep.y + dummy_c) / sqrt(pow(dummy_a,2)+pow(dummy_b,2)) < 5.0 ) ){ 
+					 (fabs(dummy_a * u->wep.x + dummy_b * u->wep.y + dummy_c) / sqrt(pow(dummy_a,2)+pow(dummy_b,2)) < 5.0 ) ){ 
 					//distance between line(unit to target) and a point(weapon coordinate) )
 					u->wep.Wep_status = Wep_on_poke;
 				}
@@ -818,7 +818,7 @@ void battleWeaponActionPreset::Rdy_TanAnglePos(Unit * u, bool LButtonDown, bool 
 			= angle_between(u->x, u->y, 
 							u->skill.x, u->skill.y);
 
-	d = abs(u->wep.target_angle - u->wep.angle) ;
+	d = fabs(u->wep.target_angle - u->wep.angle) ;
 
 	if ( d > mPI ) 
 		d = 2.0*mPI - d;
@@ -851,14 +851,14 @@ void battleWeaponActionPreset::Rdy_TanAnglePos(Unit * u, bool LButtonDown, bool 
 	d1 = u->wep.target_angle +mPI / 2.0;
 	if ( d1 > 2*mPI )
 		d1 -= 2*mPI;
-	d1 = abs(d1 - u->wep.angle );
+	d1 = fabs(d1 - u->wep.angle );
 	if ( d1 > mPI ) 
 		d1 = 2.0*mPI - d1;
 
 	d2 = u->wep.target_angle -mPI / 2.0;
 	if ( d2 < 0 ) 
 		d2 += 2*mPI;
-	d2 = abs(d2 - u->wep.angle );
+	d2 = fabs(d2 - u->wep.angle );
 	if ( d2 > mPI ) 
 		d2 = 2.0*mPI - d2;
 
@@ -1003,26 +1003,26 @@ inline void battleWeaponActionPreset::BoundWepSpeed(Unit* u){
 			u->wep.angle_accel *= 0.9;//-1.0*u->wep.angle_speed*0.1;
 		}
 
-		if ( abs(u->wep.angle_speed) < 0.3 ) {
+		if ( fabs(u->wep.angle_speed) < 0.3 ) {
 			if (u->wep.direction)
 				u->wep.angle_speed += u->wep.angle_accel;
 			else
 				u->wep.angle_speed -= u->wep.angle_accel;
 		}
 		else {
-			u->wep.angle_speed /= abs(u->wep.angle_speed);
+			u->wep.angle_speed /= fabs(u->wep.angle_speed);
 			u->wep.angle_speed *= 0.2999;
 		}
 	}
 
-	if ( (abs(u->wep.angle_speed) > 0.2 && u->wep.Wep_status == Wep_on_swing )
+	if ( (fabs(u->wep.angle_speed) > 0.2 && u->wep.Wep_status == Wep_on_swing )
 		||
 		(u->wep.Wep_status == Wep_on_dns && u->wep.stance == 1) ) 
 		u->wep.Wep_breaks_guard = true;
 	else
 		u->wep.Wep_breaks_guard = false;
 
-	if ( abs( u->wep.angle_speed ) > 0.001 ) {
+	if ( fabs( u->wep.angle_speed ) > 0.001 ) {
 		u->wep.angle += u->wep.angle_speed;
 		u->wep.x = u->wep.WD->length * cos(u->wep.angle) + u->x;
 		u->wep.y = u->wep.WD->length * sin(u->wep.angle) + u->y;

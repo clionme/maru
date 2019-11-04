@@ -27,12 +27,15 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
  	// TODO: Place code here.
 	MSG msg;
+
 	HACCEL hAccelTable;
 
 	// Initialize global strings
-	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-	LoadString(hInstance, IDC_MARU, szWindowClass, MAX_LOADSTRING);
+	//LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+	//LoadString(hInstance, IDC_MARU, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
+
+	Init_GameObject();
 
 	// Perform application initialization:
 	if (!InitInstance (hInstance, nCmdShow))
@@ -83,7 +86,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 //
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
-	WNDCLASSEX wcex;
+	WNDCLASSEX wcex = { 0 };
 
 	wcex.cbSize = sizeof(WNDCLASSEX);
 
@@ -118,8 +121,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    hInst = hInstance; // Store instance handle in our global variable
 
-   hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, WINDOW_WIDTH, WINDOW_HEIGHT, NULL, NULL, hInstance, NULL);
+   hWnd = CreateWindow( szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+	   CW_USEDEFAULT, 0, WINDOW_WIDTH, WINDOW_HEIGHT, NULL, NULL, hInstance, NULL );
+
 
    if (!hWnd)
    {
@@ -880,11 +884,12 @@ void DrawTitle(){
 /////////////////////
 inline void DrawStageText(int stage) {
 	Disp_back.DrawRESET_back_dc();
-
+	/*
 	if ( stage == -1 )
 		_stprintf_s(text,L"GAME OVER");
 	else 
 		_stprintf_s(text,L"STAGE %2d", stage);
+		*/
 	
 	Disp_back.DrawText(text, WWAD-50, WHAD-100);
 }

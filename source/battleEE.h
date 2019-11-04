@@ -15,7 +15,7 @@ Handles user / AI input
  processes unit-level battle field 
 
 */
-#define is_atk(u) (( abs(u.wep.angle_speed) > 0.1 ) || ( u.wep.Wep_status == Wep_on_poke ) || (u.wep.Wep_status == Wep_on_dns && u.wep.stance == 1) ) 
+#define is_atk(u) (( fabs(u.wep.angle_speed) > 0.1 ) || ( u.wep.Wep_status == Wep_on_poke ) || (u.wep.Wep_status == Wep_on_dns && u.wep.stance == 1) ) 
                   // || (u.wep.weapon_type == 4)  used when the dagger was too short ( auto hit )
 class battleEE
 {
